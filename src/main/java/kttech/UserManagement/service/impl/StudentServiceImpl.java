@@ -47,7 +47,7 @@ public class StudentServiceImpl implements StudentService {
             st.setDepartment(student.getDepartment());
             return studentRepository.save(st);
 
-        }).orElseThrow(() -> new )
+        }).orElseThrow(() -> new StudentNotFoundException("Sorry, this student could not be found") )
     }
 
     @Override
