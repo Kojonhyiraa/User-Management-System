@@ -58,8 +58,6 @@ public class StudentServiceImpl implements StudentService {
             throw new StudentNotFoundException("Sorry, this student could not be found");
         }
         studentRepository.deleteById(id);
-        
-
     }
 
     private boolean studentAlreadyExists(String email) {
