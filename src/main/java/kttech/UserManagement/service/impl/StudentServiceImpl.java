@@ -1,6 +1,7 @@
 package kttech.UserManagement.service.impl;
 
 import kttech.UserManagement.exception.StudentAlreadyExistsException;
+import kttech.UserManagement.exception.StudentNotFoundException;
 import kttech.UserManagement.model.Student;
 import kttech.UserManagement.repository.StudentRepository;
 import kttech.UserManagement.service.StudentService;
@@ -34,7 +35,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student getStudentById(Long id) {
-        return null;
+        return studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException("Sorry, no student found with Id:"+id));
     }
 
     @Override
@@ -47,7 +48,7 @@ public class StudentServiceImpl implements StudentService {
             st.setDepartment(student.getDepartment());
             return studentRepository.save(st);
 
-        }).orElseThrow(() -> new StudentNotFoundException("Sorry, this student could not be found") )
+        }).orElseThrow(() -> new StudentNotFoundException("Sorry, this student could not be found") );
     }
 
     @Override
