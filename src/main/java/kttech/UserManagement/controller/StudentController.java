@@ -45,6 +45,13 @@ public class StudentController {
     }
 
 
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<String> deleteStudent(@PathVariable(name = "id") Long id) {
+        //deleting student
+        studentService.deleteStudent(id);
+        //return body
+        return new ResponseEntity<>("Student has been deleted successfully", HttpStatus.OK);
+    }
 
 
 
@@ -52,4 +59,5 @@ public class StudentController {
 
 
 
-}
+
+    }
