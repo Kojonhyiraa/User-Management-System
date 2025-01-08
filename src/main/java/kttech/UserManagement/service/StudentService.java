@@ -1,9 +1,11 @@
 package kttech.UserManagement.service;
 
 import kttech.UserManagement.model.Student;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface StudentService {
 
     Student addStudent(Student student);
