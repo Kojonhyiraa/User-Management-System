@@ -1,6 +1,7 @@
 package kttech.UserManagement.controller;
 
 
+import kttech.UserManagement.exception.StudentAlreadyExistsException;
 import kttech.UserManagement.model.Student;
 import kttech.UserManagement.service.StudentService;
 import lombok.RequiredArgsConstructor;
@@ -22,10 +23,11 @@ public class StudentController {
         return new ResponseEntity<>(studentService.getAllStudents(),HttpStatus.FOUND);
     }
 
+
     @PostMapping("/add") //Check the Response Entity
     public ResponseEntity<Student> addStudent(
             @RequestBody Student student
-            ){
+            ) throws StudentAlreadyExistsException {
         return new ResponseEntity<>(studentService.addStudent(student),HttpStatus.CREATED);
     }
 
