@@ -13,12 +13,10 @@ import org.hibernate.annotations.NaturalId;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @RequiredArgsConstructor
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String firstName;
@@ -27,7 +25,6 @@ public class Student {
     @NaturalId(mutable = true) //candidate PK. mutable=true allows for modification
     private String email;
 
-    private String password;
     private String department;
 
 
