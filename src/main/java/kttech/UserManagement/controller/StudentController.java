@@ -24,10 +24,10 @@ public class StudentController {
     }
 
 
-    @PostMapping("/add") //Check the Response Entity
+    @PostMapping("/add")
     public ResponseEntity<Student> addStudent(
             @RequestBody Student student
-            ) throws StudentAlreadyExistsException {
+            ){
         return new ResponseEntity<>(studentService.addStudent(student),HttpStatus.CREATED);
     }
 
