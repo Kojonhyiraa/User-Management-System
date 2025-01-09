@@ -23,7 +23,7 @@ public class StudentController {
         return new ResponseEntity<>(studentService.getAllStudents(),HttpStatus.FOUND);
     }
 
-//Create Student
+
     @PostMapping("/add")
     public ResponseEntity<Student> addStudent(
             @RequestBody Student student
