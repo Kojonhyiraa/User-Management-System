@@ -1,5 +1,6 @@
 package kttech.UserManagement.exception;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,5 +18,29 @@ public class CustomExceptionHandler {
     public Map<String, String> handleException(MethodArgumentNotValidException ex){
 
         Map<String, String> errors = new HashMap<>();
-    };
+        ex.getBindingResult()
+                .getFieldErrors()
+                .forEach((error) -> errors.put(error.getField(), error.getDefaultMessage()));
+        return errors;
+    }
+
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(StudentNotFoundException.class)
+    public Map<String, String> userNotFound(StudentNotFoundException ex){
+        Map<String, String> errors = new HashMap<>();
+        errors.put("error", ex.getMessage());
+        return errors;
+    }
+
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(StudentAlreadyExistsException.class)
+    public Map<String, String> userNotFound(StudentAlreadyExistsException ex){
+        Map<String, String> errors = new HashMap<>();
+        errors.put("error", ex.getMessage());
+        return errors;
+    }
+
+
 }
