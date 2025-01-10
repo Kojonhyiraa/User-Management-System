@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 const StudentsView = () => {
+
+    const [students, setStudents] = useState([])
     return (
         <section>
          <table>
@@ -14,8 +16,24 @@ const StudentsView = () => {
                  <th>Actions</th>
              </tr>
              </thead>
-             <tbody>
 
+             <tbody>
+             {students.map((student, index) => (
+                 <tr key={student.id}>
+                     <th scope="row" key={index}>
+                         {index + 1}
+                     </th>
+                     <td>{student.id}</td>
+                     <td>{student.firstname}</td>
+                     <td>{student.lastname}</td>
+                     <td>{student.email}</td>
+                     <td>{student.department}</td>
+                     <td>View</td>
+                     <td>Update</td>
+                     <td>Delete</td>
+                 </tr>
+
+             ))}
              </tbody>
          </table>
         </section>
