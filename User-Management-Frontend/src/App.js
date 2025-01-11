@@ -1,7 +1,7 @@
 
 import './App.css';
 import StudentsView from "./component/student/StudentsView";
-import ""
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 
 function App() {
   return (
