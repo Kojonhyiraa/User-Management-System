@@ -1,8 +1,20 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
+import axios from "axios";
 
 const StudentsView = () => {
 
     const [students, setStudents] = useState([])
+
+    useEffect(() => {
+        getallStudents();
+    },[])
+
+    const getallStudents = async() => {
+        const response = await axios.get("http://localhost:8080/students/all")
+        setStudents(response.data)
+    }
+
+
     return (
         <section>
          <table>
