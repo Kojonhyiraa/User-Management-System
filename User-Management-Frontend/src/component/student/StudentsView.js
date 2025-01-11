@@ -10,39 +10,59 @@ const StudentsView = () => {
     },[])
 
     const getallStudents = async() => {
-        const response = await axios.get("http://localhost:8080/students/all")
-        setStudents(response.data)
-    }
+        const response = await axios.get("http://localhost:8080/students/all",
+            {
+                validateStatus: () => {
+                    return true;
+        }
+        }
+        );
+
+                if(response.status === 302) {
+                    setStudents(response.data)
+                }
+                 }
 
 
     return (
         <section>
-         <table>
+         <table className="table table-bordered table-hover">
              <thead>
-             <tr>
+             <tr className="text-center">
                  <th>ID</th>
                  <th>First Name</th>
                  <th>Last Name</th>
                  <th> Email </th>
                  <th>Department</th>
-                 <th>Actions</th>
+                 <th colSpan="3">Actions</th>
              </tr>
              </thead>
 
-             <tbody>
+             <tbody className="text-center ">
              {students.map((student, index) => (
                  <tr key={student.id}>
                      <th scope="row" key={index}>
                          {index + 1}
                      </th>
-                     <td>{student.id}</td>
-                     <td>{student.firstname}</td>
-                     <td>{student.lastname}</td>
+                     <td>{student.firstName}</td>
+                     <td>{student.lastName}</td>
                      <td>{student.email}</td>
                      <td>{student.department}</td>
-                     <td>View</td>
-                     <td>Update</td>
-                     <td>Delete</td>
+                     <td className="mx-2 ">
+                         <button className="btn btn-info " type="button">
+                             View
+                         </button>
+                         </td>
+                     <td className="mx-2 ">
+                         <button className="btn btn-warning " type="button">
+                             Update
+                         </button>
+                     </td>
+                     <td className="mx-2 ">
+                         <button className="btn btn-danger " type="button">
+                             Delete
+                         </button>
+                     </td>
                  </tr>
 
              ))}
