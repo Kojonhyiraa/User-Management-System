@@ -57,7 +57,7 @@ const StudentsView = () => {
                          </td>
                      <td className="mx-2 ">
 
-                         <Link to={"/update-student"} className="btn btn-warning " type="button">
+                         <Link to={"/update-student/${student.id}"} className="btn btn-warning " type="button">
                              Update
                          </Link>
                      </td>
