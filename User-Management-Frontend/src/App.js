@@ -9,7 +9,7 @@ import Home from "./Home";
 
 function App() {
   return (
-    <main className="mt-2">
+    <div className="App">
         <Router>
             <NavBar />
             <Routes>
@@ -27,7 +27,7 @@ function App() {
         </Router>
 
 
-    </main>
+    </div>
   );
 }
 
