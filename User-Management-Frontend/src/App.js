@@ -22,8 +22,8 @@ function App() {
 
                 <Route
                     exact
-                    path="/"
-                    element={<Home />}></Route>
+                    path="/view-students"
+                    element={<StudentsView />}></Route>
             </Routes>
         </Router>
 
