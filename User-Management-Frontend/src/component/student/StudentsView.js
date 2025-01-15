@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from "axios";
+import {FaTrashAlt} from "react-icons/fa";
+import {Link} from "react-router-dom";
 
 const StudentsView = () => {
 
@@ -54,13 +56,14 @@ const StudentsView = () => {
                          </button>
                          </td>
                      <td className="mx-2 ">
-                         <button className="btn btn-warning " type="button">
+
+                         <Link to={"/update-student"} className="btn btn-warning " type="button">
                              Update
-                         </button>
+                         </Link>
                      </td>
                      <td className="mx-2 ">
                          <button className="btn btn-danger " type="button">
-                             Delete
+                             <FaTrashAlt />
                          </button>
                      </td>
                  </tr>
