@@ -10,9 +10,8 @@ import Home from "./Home";
 function App() {
   return (
     <div className="App">
-      <NavBar />
-    <StudentsView/>
         <Router>
+            <NavBar />
             <Routes>
                <Route
                    exact
