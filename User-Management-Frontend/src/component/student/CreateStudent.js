@@ -1,4 +1,6 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+import axios from "axios";
 
 const CreateStudent = () => {
     const [student, setStudent] = useState({
@@ -11,13 +13,18 @@ const CreateStudent = () => {
 
     const handleSubmit = (e) => {
         setStudent({...student, [e.target.name]: e.target.value});
-        e.preventDefault();
     }
 
 
+    const createStudent = async(e) => {
+        await axios.post("http://localhost:8080/students/add",student) };
+
+
+
+
     return (
-        <div className="col-sm-8 py-2 px-5 offset-2">
-            <form>
+        <div className="col-sm-5 py-2 px-5 mt-5 offset-3 shadow rounded ">
+            <form onSubmit={(e) => createStudent(e)}>
                 <div className="input-group mb-5 ">
                     <label
                         className="input-group-text "
@@ -31,6 +38,7 @@ const CreateStudent = () => {
                         placeholder="First Name....."
                         required
                         value={firstName}
+                        onChange={(e) => handleSubmit(e)}
                     />
 
                 </div>
@@ -48,6 +56,7 @@ const CreateStudent = () => {
                         placeholder="Last Name....."
                         required
                         value={lastName}
+                        onChange={(e) => handleSubmit(e)}
                     />
 
                 </div>
@@ -66,6 +75,7 @@ const CreateStudent = () => {
                         placeholder="Enter Your Email Address...."
                         required
                         value={email}
+                        onChange={(e) => handleSubmit(e)}
                     />
 
                 </div>
@@ -84,9 +94,32 @@ const CreateStudent = () => {
                         placeholder="Enter your department...."
                         required
                         value={department}
+                        onChange={(e) => handleSubmit(e)}
                     />
 
                 </div>
+
+                <div className="row mb-5 ">
+                    <div className="col-sm-2">
+                        <button
+                            type="submit"
+                            className="btn btn-outline-success btn-lg">
+                        Save
+                        </button>
+                    </div>
+
+                    <div className="col-sm-2">
+                        <Link
+                            to={"/view-students"}
+                        type="submit"
+                        className="btn btn-outline-danger btn-lg">
+                            Cancel
+
+                        </Link>
+                    </div>
+                </div>
+
+
 
             </form>
         </div>
