@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from "axios";
-import {FaEdit, FaTrashAlt} from "react-icons/fa";
+import {FaEdit, FaEye, FaEyeDropper, FaTrashAlt} from "react-icons/fa";
 import {Link} from "react-router-dom";
 
 const StudentsView = () => {
@@ -28,10 +28,10 @@ const StudentsView = () => {
 
     return (
         <section>
-         <table className="table table-bordered table-hover">
+         <table className="table table-bordered table-hover shadow">
              <thead>
              <tr className="text-center">
-                 <th>ID</th>
+                 <th>Index No</th>
                  <th>First Name</th>
                  <th>Last Name</th>
                  <th> Email </th>
@@ -51,17 +51,23 @@ const StudentsView = () => {
                      <td>{student.email}</td>
                      <td>{student.department}</td>
                      <td className="mx-2 ">
-                         <button className="btn btn-info " type="button">
-                             View
-                         </button>
+
+                         {/* Action button: View*/}
+                         <Link to={`/student-profile/${student.id}`} className="btn btn-info " type="button">
+                             <FaEye />
+                         </Link>
                          </td>
                      <td className="mx-2 ">
 
+                         {/* Action button: Edit*/}
                          <Link to={`/update-student/${student.id}`} className="btn btn-warning " type="button">
                              <FaEdit />
                          </Link>
+
                      </td>
+
                      <td className="mx-2 ">
+                         {/* Action button: Delete*/}
                          <button className="btn btn-danger " type="button">
                              <FaTrashAlt />
                          </button>
