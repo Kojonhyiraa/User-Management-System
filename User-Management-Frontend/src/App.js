@@ -1,6 +1,7 @@
 
 import './App.css';
 import StudentsView from "./component/student/StudentsView";
+import CreateStudent from "./component/student/CreateStudent"
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "/node_modules/bootstrap/dist/js/bootstrap.min.js"
 import NavBar from "./component/common/NavBar";
@@ -23,6 +24,11 @@ function App() {
                     exact
                     path="/view-students"
                     element={<StudentsView />}></Route>
+
+                <Route
+                    exact
+                    path="/add-students"
+                    element={<CreateStudent />}></Route>
             </Routes>
         </Router>
 
