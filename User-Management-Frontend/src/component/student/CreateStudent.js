@@ -10,6 +10,7 @@ const CreateStudent = () => {
     const {firstName, lastName, email, department} = student;
 
     const handleSubmit = (e) => {
+        setStudent({...student, [e.target.name]: e.target.value});
         e.preventDefault();
     }
 
