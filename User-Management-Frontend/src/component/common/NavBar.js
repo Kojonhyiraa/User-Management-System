@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaSun, FaMoon } from 'react-icons/fa';
+import './NavBar.css'; // Add custom styles here
 
 const NavBar = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -17,8 +18,8 @@ const NavBar = () => {
     return (
         <nav className={`navbar navbar-expand-lg ${isDarkMode ? 'navbar-dark bg-dark' : 'navbar-light bg-light'} mb-4`}>
             <div className="container-fluid">
-                <Link className="navbar-brand" to={"/"}>
-                    User Management System
+                <Link className="navbar-brand fw-bold" to="/">
+                    User Management
                 </Link>
                 <button
                     className="navbar-toggler"
@@ -34,22 +35,25 @@ const NavBar = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to={"view-students"}>
-                                View All Students
+                            <Link className="nav-link active" to="view-students">
+                                View Students
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to={"/add-students"}>
-                                Add New Student
+                            <Link className="nav-link" to="add-students">
+                                Add Student
                             </Link>
                         </li>
                     </ul>
-                    {/* Light/Dark Mode Toggle Button */}
                     <button
-                        className="btn btn-outline-secondary d-flex align-items-center"
+                        className="btn toggle-btn d-flex align-items-center"
                         onClick={toggleTheme}
                     >
-                        {isDarkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
+                        {isDarkMode ? (
+                            <FaSun size={20} className="icon" />
+                        ) : (
+                            <FaMoon size={20} className="icon" />
+                        )}
                         <span className="ms-2">{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
                     </button>
                 </div>
