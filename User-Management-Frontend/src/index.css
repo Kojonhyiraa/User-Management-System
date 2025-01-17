@@ -11,26 +11,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-/* Light Mode Styles */
-body.light-mode {
-  background-color: #ffffff;
-  color: #000000;
-}
 
-/* Dark Mode Styles */
-body.dark-mode {
-  background-color: #121212;
-  color: #ffffff;
-}
-
-/* Navbar Styles for Dark Mode */
-body.dark-mode .navbar {
-  background-color: #333333 !important;
-  color: #ffffff;
-}
-
-/* Navbar Styles for Light Mode */
-body.light-mode .navbar {
-  background-color: #f8f9fa !important;
-  color: #000000;
-}
