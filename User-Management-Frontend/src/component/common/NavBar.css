@@ -1,0 +1,62 @@
+/* General Light and Dark Mode Styles */
+body.light-mode {
+    background-color: #f9f9f9;
+    color: #333333;
+}
+
+body.dark-mode {
+    background-color: #1e1e2f;
+    color: #ffffff;
+}
+
+/* Navbar Styling */
+.navbar {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+/* Toggle Button Styling */
+.toggle-btn {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    font-size: 1rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.toggle-btn:hover {
+    color: #ffcc00; /* Highlight effect on hover */
+}
+
+.toggle-btn .icon {
+    margin-right: 5px;
+}
+
+/* Dark Mode Specific Styling */
+body.dark-mode .navbar {
+    background-color: #2c2c3e !important;
+}
+
+body.dark-mode .toggle-btn:hover {
+    color: #ffd700;
+}
+
+/* Light Mode Specific Styling */
+body.light-mode .navbar {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+body.light-mode .toggle-btn:hover {
+    color: #ffa500;
+}
+
+/* Transition for Smooth Theme Switch */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
