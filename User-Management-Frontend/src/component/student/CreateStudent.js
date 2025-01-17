@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 
 const CreateStudent = () => {
+    const navigate = useNavigate();
+
     const [student, setStudent] = useState({
         firstName: "",
         lastName: "",
@@ -17,7 +19,10 @@ const CreateStudent = () => {
 
 
     const createStudent = async(e) => {
-        await axios.post("http://localhost:8080/students/add",student) };
+        e.preventDefault();
+        await axios.post("http://localhost:8080/students/add",student);
+        navigate("/view-students")
+    };
 
 
 
