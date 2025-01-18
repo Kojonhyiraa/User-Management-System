@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from "axios";
-import {FaEdit, FaEye, FaEyeDropper, FaTrashAlt} from "react-icons/fa";
+import {FaEdit, FaEye, FaTrashAlt} from "react-icons/fa";
 import {Link} from "react-router-dom";
 
 const StudentsView = () => {
@@ -8,10 +8,10 @@ const StudentsView = () => {
     const [students, setStudents] = useState([])
 
     useEffect(() => {
-        getallStudents();
+        getAllStudents();
     },[])
 
-    const getallStudents = async() => {
+    const getAllStudents = async() => {
         const response = await axios.get("http://localhost:8080/students/all",
             {
                 validateStatus: () => {
@@ -24,6 +24,11 @@ const StudentsView = () => {
                     setStudents(response.data)
                 }
                  }
+
+      const handleDelete = async (id) => {
+         await axios.delete(`http://localhost:8080/students/delete/${id}`)
+          await getAllStudents();
+      }
 
 
     return (
@@ -50,28 +55,32 @@ const StudentsView = () => {
                      <td>{student.lastName}</td>
                      <td>{student.email}</td>
                      <td>{student.department}</td>
-                     <td className="mx-2 ">
 
+                     <td className="mx-2 ">
                          {/* Action button: View*/}
                          <Link to={`/student-profile/${student.id}`} className="btn btn-info " type="button">
                              <FaEye />
                          </Link>
                          </td>
-                     <td className="mx-2 ">
 
+                     <td className="mx-2 ">
                          {/* Action button: Edit*/}
                          <Link to={`/update-student/${student.id}`} className="btn btn-warning " type="button">
                              <FaEdit />
                          </Link>
-
                      </td>
 
                      <td className="mx-2 ">
                          {/* Action button: Delete*/}
-                         <button className="btn btn-danger " type="button">
+                         <button
+                             className="btn btn-danger"
+                             type="button"
+                             onClick={() =>handleDelete(student.id)}>
                              <FaTrashAlt />
                          </button>
                      </td>
+
+
                  </tr>
 
              ))}
