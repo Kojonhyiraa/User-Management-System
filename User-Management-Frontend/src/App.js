@@ -7,6 +7,7 @@ import "/node_modules/bootstrap/dist/js/bootstrap.min.js"
 import NavBar from "./component/common/NavBar";
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
 import Home from "./Home";
+import EditStudent from "./component/student/EditStudent";
 
 function App() {
   return (
@@ -29,6 +30,11 @@ function App() {
                     exact
                     path="/add-students"
                     element={<CreateStudent />}></Route>
+
+                <Route
+                    exact
+                    path="/update-students"
+                    element={<EditStudent />}></Route>
             </Routes>
         </Router>
 
