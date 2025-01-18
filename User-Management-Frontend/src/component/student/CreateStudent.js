@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import './CreateStudent.css';  // Custom CSS file for animations and transitions
+import "./CreateStudent.css";
 
 const CreateStudent = () => {
     const navigate = useNavigate();
@@ -12,10 +12,12 @@ const CreateStudent = () => {
         email: "",
         department: ""
     });
-    const [errorMessage, setErrorMessage] = useState(""); // State to store error message
+    const [errorMessage, setErrorMessage] = useState(""); // Error message state
+    const [isPopupVisible, setIsPopupVisible] = useState(false); // Popup visibility state
+
     const { firstName, lastName, email, department } = student;
 
-    const handleSubmit = (e) => {
+    const handleInputChange = (e) => {
         setStudent({ ...student, [e.target.name]: e.target.value });
     };
 
@@ -24,8 +26,8 @@ const CreateStudent = () => {
         try {
             const response = await axios.post("http://localhost:8080/students/add", student);
 
-            if (response.status === 200) {
-                navigate("/view-students");
+            if (response.status === 201) {
+                setIsPopupVisible(true); // Show popup on success
             }
         } catch (error) {
             if (error.response && error.response.data && error.response.data.error) {
@@ -36,15 +38,28 @@ const CreateStudent = () => {
         }
     };
 
+    const handlePopupClose = () => {
+        setIsPopupVisible(false);
+        setStudent({
+            firstName: "",
+            lastName: "",
+            email: "",
+            department: ""
+        }); // Reset the student inputs
+    };
+
+    const handleViewAllStudents = () => {
+        setIsPopupVisible(false);
+        navigate("/view-students"); // Navigate to view students page
+    };
+
     return (
         <div className="background">
             <div className="form-container">
                 <h2 className="form-title">Create New Student</h2>
 
                 {errorMessage && (
-                    <div className="alert alert-danger fade-in">
-                        {errorMessage}
-                    </div>
+                    <div className="alert alert-danger fade-in">{errorMessage}</div>
                 )}
 
                 <form onSubmit={createStudent} className="student-form">
@@ -58,7 +73,7 @@ const CreateStudent = () => {
                             placeholder="First Name..."
                             required
                             value={firstName}
-                            onChange={handleSubmit}
+                            onChange={handleInputChange}
                         />
                     </div>
 
@@ -72,7 +87,7 @@ const CreateStudent = () => {
                             placeholder="Last Name..."
                             required
                             value={lastName}
-                            onChange={handleSubmit}
+                            onChange={handleInputChange}
                         />
                     </div>
 
@@ -86,7 +101,7 @@ const CreateStudent = () => {
                             placeholder="Enter Your Email Address..."
                             required
                             value={email}
-                            onChange={handleSubmit}
+                            onChange={handleInputChange}
                         />
                     </div>
 
@@ -100,7 +115,7 @@ const CreateStudent = () => {
                             placeholder="Enter Your Department..."
                             required
                             value={department}
-                            onChange={handleSubmit}
+                            onChange={handleInputChange}
                         />
                     </div>
 
@@ -110,6 +125,29 @@ const CreateStudent = () => {
                     </div>
                 </form>
             </div>
+
+            {isPopupVisible && (
+                <div className="popup-overlay">
+                    <div className="popup-content">
+                        <h3>Student Created Successfully!</h3>
+                        <p>The student has been added to the database.</p>
+                        <div className="popup-buttons">
+                            <button
+                                className="btn btn-danger"
+                                onClick={handlePopupClose}
+                            >
+                                Close
+                            </button>
+                            <button
+                                className="btn btn-primary"
+                                onClick={handleViewAllStudents}
+                            >
+                                View All Students
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
