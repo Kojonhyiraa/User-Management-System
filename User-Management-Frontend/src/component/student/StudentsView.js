@@ -65,7 +65,12 @@ const StudentsView = () => {
 
                      <td className="mx-2 ">
                          {/* Action button: Edit*/}
-                         <Link to={`/update-student/${student.id}`} className="btn btn-warning " type="button">
+                         <Link
+                             to={`/update-students/${student.id}`}
+                             className="btn btn-warning "
+                             type="button"
+
+                         >
                              <FaEdit />
                          </Link>
                      </td>
