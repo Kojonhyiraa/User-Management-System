@@ -68,7 +68,7 @@ const StudentsView = () => {
                          <Link
                              to={`/update-students/${student.id}`}
                              className="btn btn-warning "
-                             type="button"
+                             //type="button"
 
                          >
                              <FaEdit />
