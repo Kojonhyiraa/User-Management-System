@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="HttpClientEndpointsTabState">
-    <option name="requestToText" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;b8685b03c1608f40569c2a6e3d824f6d23947338&quot; value=&quot;###&amp;#10;PATCH http://localhost:8080/students/update/{{id}}&amp;#10;Content-Type: application/json&amp;#10;&amp;#10;{&amp;#10;  &amp;quot;id&amp;quot;: 0,&amp;#10;  &amp;quot;firstName&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;lastName&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;email&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;department&amp;quot;: &amp;quot;&amp;quot;&amp;#10;}&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
+    <option name="requestToText" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;b8685b03c1608f40569c2a6e3d824f6d23947338&quot; value=&quot;###&amp;#10;PATCH http://localhost:8080/students/update/{{id}}&amp;#10;Content-Type: application/json&amp;#10;&amp;#10;{&amp;#10;  &amp;quot;id&amp;quot;: 0,&amp;#10;  &amp;quot;firstName&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;lastName&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;email&amp;quot;: &amp;quot;&amp;quot;,&amp;#10;  &amp;quot;department&amp;quot;: &amp;quot;&amp;quot;&amp;#10;}&quot; /&gt;&#10;  &lt;entry key=&quot;43c857e208e4cc49e0a899a0f1ea36a829ee47f4&quot; value=&quot;###&amp;#10;GET http://localhost:8080/students/{{id}}&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
   </component>
 </project>
