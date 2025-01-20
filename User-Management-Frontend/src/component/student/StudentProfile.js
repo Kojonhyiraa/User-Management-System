@@ -1,12 +1,27 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from "axios";
+import {useParams} from "react-router-dom";
 
 const StudentProfile = () => {
+    const {id} = useParams();
+
     const [student, setStudent] = useState({
         firstName: "",
         lastName: "",
         email: "",
         department: ""
     });
+
+    useEffect(() => {
+        getOneStudent();
+    },[])
+
+    const getOneStudent = async() => {
+        const response = await axios.get(`http://localhost:8080/students/${id}`);
+        setStudent(response.data);
+    }
+
+
     return (
         <section
         style={{ backgroundColor: "whitesmoke" }}>
@@ -17,7 +32,7 @@ const StudentProfile = () => {
                             <div className="card-body text-center">
                                 <img
                                 className="rounded-circle img-fluid"
-                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/avatar.jpg"
+                                src="../../Assets/canvar.png"
                                 alt="avatar"
                                 style={{ width: 150 }}  />
 
@@ -82,7 +97,7 @@ const StudentProfile = () => {
                                 <div className="row">
                                     <div className="col-sm-3">
                                         <h5 className="mb-0">
-                                            Email
+                                            Email:
                                         </h5>
                                     </div>
 
@@ -95,6 +110,20 @@ const StudentProfile = () => {
                                 <hr/>
 
 
+                                <div className="row">
+                                    <div className="col-sm-3">
+                                        <h5 className="mb-0">
+                                            Department:
+                                        </h5>
+                                    </div>
+
+                                    <div className="col-sm-9">
+                                        <p className="text-muted mb-0">
+                                            {student.department}
+                                        </p>
+                                    </div>
+                                </div>
+                                <hr/>
 
 
                             </div>
