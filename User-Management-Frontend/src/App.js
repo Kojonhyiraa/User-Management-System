@@ -10,6 +10,7 @@ import Home from "./Home";
 import EditStudent from "./component/student/EditStudent";
 import StudentProfile from "./component/student/StudentProfile";
 
+
 function App() {
   return (
     <div className="App">
