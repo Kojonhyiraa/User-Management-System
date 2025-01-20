@@ -2,10 +2,13 @@ import React, {useEffect, useState} from 'react'
 import axios from "axios";
 import {FaEdit, FaEye, FaTrashAlt} from "react-icons/fa";
 import {Link} from "react-router-dom";
+import Search from "../common/Search";
 
 const StudentsView = () => {
 
     const [students, setStudents] = useState([])
+    const [keyword, setKeyword] = useState("")
+
 
     useEffect(() => {
         getAllStudents();
@@ -34,6 +37,7 @@ const StudentsView = () => {
 
     return (
         <section>
+            <Search keyword={keyword} setKeyword={setKeyword} />
          <table className="table table-bordered table-hover shadow">
              <thead>
              <tr className="text-center">
@@ -47,7 +51,13 @@ const StudentsView = () => {
              </thead>
 
              <tbody className="text-center ">
-             {students.map((student, index) => (
+             {students
+                 .filter((student) =>
+                     student.firstName
+                         .toLowerCase()
+                         .includes(keyword))
+
+                 .map((student, index) => (
                  <tr key={student.id}>
                      <th scope="row" key={index}>
                          {index + 1}
