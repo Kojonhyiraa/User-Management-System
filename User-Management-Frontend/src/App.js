@@ -19,7 +19,13 @@ function App() {
                <Route
                    exact
                    path="/"
-                   element={<StudentProfile />}></Route>
+                   element={<Home />}></Route>
+
+
+                <Route
+                    exact
+                    path="/student-profile/:id"
+                    element={<StudentProfile />}></Route>
 
 
                 <Route
