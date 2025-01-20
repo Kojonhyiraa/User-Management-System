@@ -11,6 +11,7 @@ const StudentsView = () => {
         getAllStudents();
     },[])
 
+
     const getAllStudents = async() => {
         const response = await axios.get("http://localhost:8080/students/all",
             {
@@ -58,7 +59,11 @@ const StudentsView = () => {
 
                      <td className="mx-2 ">
                          {/* Action button: View*/}
-                         <Link to={`/student-profile/${student.id}`} className="btn btn-info " type="button">
+                         <Link
+                             to={`/student-profile/${student.id}`}
+                             className="btn btn-info "
+                             type="button">
+
                              <FaEye />
                          </Link>
                          </td>
@@ -68,9 +73,8 @@ const StudentsView = () => {
                          <Link
                              to={`/update-students/${student.id}`}
                              className="btn btn-warning "
-                             //type="button"
+                             type="button">
 
-                         >
                              <FaEdit />
                          </Link>
                      </td>
