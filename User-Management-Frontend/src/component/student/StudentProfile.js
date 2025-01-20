@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {useParams} from "react-router-dom";
+import canvarImage from '../../Assets/canvar.png';
 
 const StudentProfile = () => {
     const {id} = useParams();
@@ -24,6 +25,7 @@ const StudentProfile = () => {
 
     return (
         <section
+        className="shadow"
         style={{ backgroundColor: "whitesmoke" }}>
             <div className="container py-5">
                 <div className="row">
@@ -32,7 +34,7 @@ const StudentProfile = () => {
                             <div className="card-body text-center">
                                 <img
                                 className="rounded-circle img-fluid"
-                                src="../../Assets/canvar.png"
+                                src={canvarImage}
                                 alt="avatar"
                                 style={{ width: 150 }}  />
 
